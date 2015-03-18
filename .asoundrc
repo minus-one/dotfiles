@@ -1,0 +1,39 @@
+pcm.ossmix {
+  type dmix
+  ipc_key 1024
+  slave {
+    pcm "hw:1,0"  # change to match your actual device
+    period_size 1024
+    buffer_size 4096
+    # rate 44100
+  }
+  bindings {
+    0 0 
+    1 1
+  }
+}
+pcm.duplex {
+  type asym
+  playback.pcm "ossmix"
+  capture.pcm "dsnoop"
+}
+# next makes it so that this "pcm" is the default, so that *everything*
+# plays through it.  There is one warning about this becasue "dmix does
+# not allow nmap access".  No idea what that means, so ignoring and
+# crossing my fingers
+pcm.!default {
+  type plug
+  slave.pcm "duplex"
+}
+pcm.dsp0 {
+  type plug
+  slave.pcm "duplex"
+}
+# next line: is the "ctl" part actually "ct1"?
+ctl.ossmix {
+  type hw
+  card 0
+}
+
+# to test:
+# aplay -D plug:ossmix some.mp3

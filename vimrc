@@ -1,11 +1,11 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 
 " Plugins that vundle will bundleinstall
 Bundle 'nanotech/jellybeans.vim'
@@ -16,10 +16,11 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-sensible'
 
+call vundle#end() 
 
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme delek
 
 filetype plugin indent on
 
@@ -37,7 +38,7 @@ set nobackup
 set hlsearch
 set ignorecase
 set smartcase
-set cursorline
+" set cursorline
 set mousehide
 set incsearch
 
