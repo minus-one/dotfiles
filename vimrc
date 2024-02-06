@@ -13,6 +13,9 @@ set ignorecase
 set smartcase
 set mousehide
 set incsearch
+set showcmd
+set noerrorbells
+highlight MatchParen ctermbg=4
 
 execute pathogen#infect()
 syntax on
